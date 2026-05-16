@@ -1,0 +1,100 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void ordenar_arreglo(int[], int, int);
+void llenar_arr(int[], int);
+void mostrar(int, int[]);
+
+int main()
+{
+    int n=0;
+    do
+    {
+    	printf("\nIngresa el size del arreglo (n>3): ");
+    	scanf("%d",&n);
+    	if(n<3)
+    	{
+    		printf("\n\nValor invalido\n");
+    	}
+    	system("PAUSE");
+    	system("CLS");
+    }while(n<3);
+
+    int orden;
+
+    do
+	{
+		printf("\nIngresa el orden (1 - Ascendente o 2 - descendente): ");
+    	scanf("%d",&orden);
+    	if(orden != 1 && orden != 2)
+    	{
+    		printf("\n\nValor invalido\n");
+    	}
+    	system("PAUSE");
+    	system("CLS");
+	}
+	while(orden != 1 && orden != 2);
+
+    int arr[n];
+
+    llenar_arr(arr,n);
+    ordenar_arreglo(arr,n,orden);
+    mostrar(n,arr);
+    return 0;
+}
+
+void ordenar_arreglo(int arr[], int n, int orden)
+{
+    int temp;
+    if(orden == 1)
+    {
+        for(int i=0; i<n; i++)
+        {
+            for(int j=i+1; j<n; j++)
+            {
+                if(*(arr+i) > *(arr+j))
+                {
+                	temp = *(arr+i);
+                	*(arr+i) = *(arr+j);
+                	*(arr+j) = temp;
+                }
+            }
+        }
+
+    }
+    else if(orden == 2)
+    {
+    	for(int i=0; i<n; i++)
+        {
+            for(int j=i+1; j<n; j++)
+            {
+                if(*(arr+i) < *(arr+j))
+                {
+                	temp = *(arr+i);
+                	*(arr+i) = *(arr+j);
+                	*(arr+j) = temp;
+                }
+            }
+        }
+    }
+}
+
+void mostrar(int tam, int arrY[])
+{
+	for(int i=0; i<tam; i++)
+	{
+		printf("\nValor [%d]: %d ",(i+1), *(arrY+i));
+		printf("");
+	}
+}
+
+void llenar_arr(int arr[], int tam)
+{
+	for(int i=0; i<tam; i++)
+	{
+		printf("\nIngresa valor [%d]: ",i+1);
+		scanf("%d",arr+i);
+	}
+	printf("\n\n\t\t ==Arreglo lleno==\a\n");
+	system("PAUSE");
+}
