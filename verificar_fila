@@ -1,0 +1,17 @@
+int verificar_fila(int *arr, int tam)
+{
+	for(int i=0; i<tam; i++)
+	{
+		for(int j=0; j<tam; j++)
+		{
+			for(int k=j+1; k<tam; k++)
+			{
+				if( *(arr + i*tam + j) == *(arr + i*tam + k))
+				{
+					return 0;
+				}
+			}
+		}
+	}
+	return 1;
+}
