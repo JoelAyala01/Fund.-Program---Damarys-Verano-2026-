@@ -1,0 +1,31 @@
+int verificar_subcuadro(int *arr, int tam)
+{
+	int subcuadro = sqrt(tam);
+
+	for(int i=0; i<tam; i+=subcuadro) //i+=subcuadro equivale a i=i+subcuadro.
+	{
+		for(int j=0; j<tam; j+=subcuadro) ////j+=subcuadro equivale a j=j+subcuadro.
+		{
+			for(int x=0; x<subcuadro; x++)
+			{
+				for(int y=0; y<subcuadro; y++)
+				{
+					for(int x2=0; x2<subcuadro; x2++)
+					{
+						for(int y2=0; y2<subcuadro; y2++)
+						{
+							if(x2 == x && y2 == y)
+								continue;
+							if(*(arr+(i+x)*tam+(j+y)) == *(arr+(i+x2)*tam+(j+y2)))
+							{
+								printf("\nFallo en el subcuadro\n");
+								return 0;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	return 1;
+}
