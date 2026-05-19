@@ -1,0 +1,17 @@
+int verificar_columna(int *arr, int tam)
+{
+	for(int i=0; i<tam; i++)
+	{
+		for(int j=0; j<tam; j++)
+		{
+			for(int k=j+1; k<tam; k++)
+			{
+				if( *(arr + j*tam + i) == *(arr + k*tam + i))
+				{
+					return 0;
+				}
+			}
+		}
+	}
+	return 1;
+}
